@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page  import="paq.Hello" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +15,6 @@
     </head>
     <body>
         <h1>soy el mapa!</h1>
+        <%= Hello.saludar()%>
     </body>
 </html>
