@@ -5,17 +5,26 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page  import="paq.Hello" %>
+<%@page import="paq.Hello" %>
 <%@page import="paq.ClienteDAO" %>
 <%@page import="paq.Cliente" %>
 <%@page import="paq.ProductoDAO" %>
-<%@page import="paq.Producto" %>
+<%@page import="paq.Producto, paq.MovimientoDAO, paq.Movimiento, java.util.*" %>
 
 <jsp:useBean id="c" class="paq.Cliente"></jsp:useBean>
 <jsp:setProperty property="*" name="c"></jsp:setProperty>
 
 <jsp:useBean id="p" class="paq.Producto"></jsp:useBean>
 <jsp:setProperty property="*" name="p"></jsp:setProperty>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+    List<Movimiento> lista = MovimientoDAO.getAllRecords();
+    request.setAttribute("lista", lista);
+%>
+
+<jsp:useBean id="mov" class="paq.Movimiento"></jsp:useBean>
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,15 +33,16 @@
     </head>
     <body>
         <h1>soy el mapa!</h1>
-        <%= Hello.saludar()%>
+        Impresion de movimientos
         
-        <!-- Testing de clase ClienteDAO -->
         
-           
-        <!-- Testing de clase ProductoDAO -->
-        <% ProductoDAO.getAllRecords(); ProductoDAO.getRecordById(1); %>
-        <% p.setId(1); p.setNombre("Galletas"); ProductoDAO.update(p); %>
         
+        <c:forEach items="${lista}" var="m">
+            ${m}
+        </c:forEach>
+        
+        <br>por id!
+    <%= MovimientoDAO.getRecordById(2) %>
                 
     </body>
 </html>
