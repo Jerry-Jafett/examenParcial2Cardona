@@ -8,9 +8,14 @@
 <%@page  import="paq.Hello" %>
 <%@page import="paq.ClienteDAO" %>
 <%@page import="paq.Cliente" %>
+<%@page import="paq.ProductoDAO" %>
+<%@page import="paq.Producto" %>
+
 <jsp:useBean id="c" class="paq.Cliente"></jsp:useBean>
 <jsp:setProperty property="*" name="c"></jsp:setProperty>
 
+<jsp:useBean id="p" class="paq.Producto"></jsp:useBean>
+<jsp:setProperty property="*" name="p"></jsp:setProperty>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,10 +25,14 @@
     <body>
         <h1>soy el mapa!</h1>
         <%= Hello.saludar()%>
-        <% ClienteDAO.getAllRecords();%>
-        <% ClienteDAO.getRecordById(2);%>
-        <% c.setId(3); c.setNombre("Jafett"); c.setSaldo(999); ClienteDAO.update(c);%>
-           
         
+        <!-- Testing de clase ClienteDAO -->
+        
+           
+        <!-- Testing de clase ProductoDAO -->
+        <% ProductoDAO.getAllRecords(); ProductoDAO.getRecordById(1); %>
+        <% p.setId(1); p.setNombre("Galletas"); ProductoDAO.update(p); %>
+        
+                
     </body>
 </html>

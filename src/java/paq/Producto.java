@@ -10,8 +10,8 @@ package paq;
  * @author Gerardo
  */
 public class Producto {
-    int id, stock, cantidad, precio;
-    String nombre;
+    private int id, stock, cantidad, precio;
+    private String nombre;
 
     public int getId() {
         return id;
@@ -53,5 +53,10 @@ public class Producto {
         this.nombre = nombre;
     }
     
+    @Override
+    public String toString(){
+        String res = "ID: " +id+ " Nombre: " +nombre+ " Stock: " +stock+ " Cantidad: " +cantidad+ " Precio; " + precio;
+        return res;
+    }
     
 }
