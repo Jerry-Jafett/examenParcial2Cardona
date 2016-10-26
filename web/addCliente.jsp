@@ -20,12 +20,15 @@
         <h1>Agregar Cliente</h1>
         
         <form method="post" action="addCliente.jsp">
-            ID: <input type="text" name="id_c"><br>
-            Nombre: <input type="text" name="nom"><br>
+            ID: <input type="text" name="id"><br>
+            Nombre: <input type="text" name="nombre"><br>
             Saldo: <input type="text" name="saldo"><br>
             <input type="submit" name="submit">
         </form>
         
-        
+    <%if(c.getId() != 0)
+        <%= c %>
+    %>
+           
     </body>
 </html>

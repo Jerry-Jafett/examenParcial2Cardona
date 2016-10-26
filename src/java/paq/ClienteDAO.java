@@ -44,7 +44,7 @@ public class ClienteDAO {
                 u.setNombre(rs.getString("nom"));
                 list.add(u);
             }
-            System.out.println("Todos los records se hanalmacenado");
+            System.out.println("Todos los records se han almacenado");
         }catch(SQLException e){ System.out.println(e);}
         return list;
     }
