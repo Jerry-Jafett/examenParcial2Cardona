@@ -26,9 +26,9 @@
             <input type="submit" name="submit">
         </form>
         
-    <%if(c.getId() != 0)
-        <%= c %>
-    %>
+    
+        <%= c %>;
+    
            
     </body>
 </html>
