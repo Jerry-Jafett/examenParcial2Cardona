@@ -41,11 +41,58 @@ public class ClienteDAO {
                 Cliente u = new Cliente();
                 u.setId(rs.getInt("id_c"));
                 u.setSaldo(rs.getInt("saldo"));
-                u.setNombre(rs.getString("nombre"));
+                u.setNombre(rs.getString("nom"));
                 list.add(u);
             }
+            System.out.println("Todos los records se hanalmacenado");
         }catch(SQLException e){ System.out.println(e);}
         return list;
     }
     
+    public static Cliente getRecordById(int id){
+        Cliente c = new Cliente();
+        
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from cliente where id_c=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            if(rs != null){
+                c.setId(rs.getInt("id_c"));
+                c.setNombre(rs.getString("nom"));
+                c.setSaldo(rs.getInt("saldo"));
+            }
+            
+            System.out.println("El usuario ha sido obtenido por su ID");
+        } catch (Exception e) {
+            System.out.println("Error en la query!!");
+            System.out.println(e);
+        }
+        System.out.println(c);
+        return c;
+    }
+    
+    public static int update(Cliente c){
+        
+        Connection con = getConnection();
+        int res = -1;
+        
+//        c = new Cliente();
+//        c.setId(2); c.setNombre("Geras"); c.setSaldo(9999);
+        
+        try {
+            PreparedStatement ps = con.prepareStatement("update cliente set nom=? , saldo=? where id_c=?");
+            ps.setString(1, c.getNombre());
+            ps.setInt(2, c.getSaldo());
+            ps.setInt(3, c.getId());
+            
+            res = ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return res;
+    }
 }

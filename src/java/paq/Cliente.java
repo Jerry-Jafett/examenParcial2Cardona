@@ -10,8 +10,8 @@ package paq;
  * @author Gerardo
  */
 public class Cliente {
-    int id, saldo;
-    String nombre;
+    private int id, saldo;
+    private String nombre;
 
     public int getId() {
         return id;
@@ -37,5 +37,9 @@ public class Cliente {
         this.nombre = nombre;
     }
                     
-                    
+    @Override
+    public String toString(){
+        String res = "ID: " + id + " Nom: " + nombre + " Saldo: " + saldo;
+        return res;
+    }
 }
